@@ -4,7 +4,7 @@ module.exports = function(grunt) {
     // Project configuration.
     grunt.initConfig({
         jshint: {
-            all: ['*.js', '*/*.js'],
+            all: ['*.js', 'src/node-util.js', 'src/shims.js', 'test/*.js'],
             options: {
                 jshintrc: '.jshintrc'
             }
