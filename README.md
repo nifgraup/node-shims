@@ -8,8 +8,7 @@ This repository contains a basic set shims for commonly used node API for use in
 This repo can be used as a drop-in replacement for the node builtins:
 
     var shims = require('node-shims'),
-        Buffer = shims.Buffer.Buffer,
-        Socket = shims.net.Socket;
+        util = shims.util;
 
 To run the tests, do the following
 

@@ -12,6 +12,7 @@ define(function(require) {
     shims.Buffer = require('buffer-browserify');
     shims.net = require('net-chromeify');
     shims.tls = require('tls-chromeify');
+    shims.crypto = require('crypto-browserify');
 
     return shims;
 });

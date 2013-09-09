@@ -42,4 +42,12 @@ describe('node shims', function() {
         });
     });
 
+    describe('crypte', function() {
+        it('should exist', function() {
+            expect(shims.crypto).to.exist;
+            expect(shims.crypto.createHmac).to.exist;
+            expect(shims.crypto.createHash).to.exist;
+        });
+    });
+
 });

@@ -11,7 +11,8 @@
         "amdefine": ">=0.0.8",
         "buffer-browserify": "https://github.com/whiteout-io/buffer-browserify/tarball/master",
         "net-chromeify": "https://github.com/whiteout-io/net-chromeify/tarball/rewrite",
-        "tls-chromeify": "https://github.com/whiteout-io/tls-chromeify/tarball/master"
+        "tls-chromeify": "https://github.com/whiteout-io/tls-chromeify/tarball/master",
+        "crypto-browserify": "https://github.com/whiteout-io/crypto-browserify/tarball/amd",
     },
     "devDependencies": {
         "mocha": "~1.12.0",
