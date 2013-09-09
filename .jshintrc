@@ -1,0 +1,33 @@
+{
+	"indent": 4,
+	"strict": true,
+	"globalstrict": true,
+	"node": true,
+	"browser": true,
+	"camelcase": false,
+	"nonew": true,
+	"curly": true,
+	"eqeqeq": true,
+	"immed": true,
+	"newcap": true,
+	"regexp": true,
+	"evil": true,
+	"eqnull": true,
+	"expr": true,
+	"trailing": true,
+	"undef": true,
+	"unused": true,
+
+	"predef": [
+            "before",
+            "beforeEach",
+            "after",
+            "afterEach",
+			"console",
+			"describe",
+			"it",
+			"mocha"
+	],
+
+	"globals": {}
+}
