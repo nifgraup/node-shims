@@ -6,7 +6,7 @@
         "name": "Felix Hammerl",
         "email": "felix@whiteout.io"
     }],
-    "main": "src/shims.js",
+    "main": "shims.js",
     "dependencies": {
         "amdefine": ">=0.0.8",
         "crypto-browserify": "https://github.com/whiteout-io/crypto-browserify/tarball/amd",
