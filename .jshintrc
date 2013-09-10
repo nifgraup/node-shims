@@ -26,7 +26,8 @@
 			"console",
 			"describe",
 			"it",
-			"mocha"
+			"mocha",
+			"chrome"
 	],
 
 	"globals": {}

@@ -34,7 +34,7 @@ define(function() {
 
     var util = require('./node-util');
     var Stream = require('./node-stream-default');
-    var Buffer = require('buffer-browserify').Buffer;
+    var Buffer = require('./node-buffer').Buffer;
     require('setimmediate');
 
     function WriteReq(chunk, encoding, cb) {

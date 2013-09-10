@@ -28,7 +28,7 @@ define(function() {
 
     var o = {};
 
-    var Buffer = require('buffer-browserify').Buffer;
+    var Buffer = require('./node-buffer').Buffer;
 
     function assertEncoding(encoding) {
         if (encoding && !Buffer.isEncoding(encoding)) {

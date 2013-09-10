@@ -9,11 +9,11 @@ define(function(require) {
     shims.util = require('./node-util');
     shims.events = require('./node-events');
     shims.Stream = require('./node-stream');
+    shims.net = require('./node-net');
+    shims.tls = require('./node-tls');
+    shims.Buffer = require('./node-buffer');
 
     // external deps
-    shims.Buffer = require('buffer-browserify');
-    shims.net = require('net-chromeify');
-    shims.tls = require('tls-chromeify');
     shims.crypto = require('crypto-browserify');
 
     return shims;
