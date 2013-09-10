@@ -22,23 +22,23 @@ describe('node shims', function() {
             expect(shims.util.isArray([])).to.be.true;
             expect(shims.util.isArray(1)).to.be.false;
         });
-        
+
         it('should be a boolean', function() {
             expect(shims.util.isBoolean(true)).to.be.true;
             expect(shims.util.isBoolean(1)).to.be.false;
         });
-        
+
         it('should be null', function() {
             expect(shims.util.isNull(null)).to.be.true;
             expect(shims.util.isNull(1)).to.be.false;
         });
-        
+
         it('should be null or undefined', function() {
             expect(shims.util.isNullOrUndefined(null)).to.be.true;
             expect(shims.util.isNullOrUndefined(undefined)).to.be.true;
             expect(shims.util.isNullOrUndefined(1)).to.be.false;
         });
-        
+
         it('should be a number', function() {
             expect(shims.util.isNumber(1)).to.be.true;
             expect(shims.util.isNumber('s')).to.be.false;
@@ -60,7 +60,7 @@ describe('node shims', function() {
         });
 
         it('should be a function', function() {
-            expect(shims.util.isFunction(function(){})).to.be.true;
+            expect(shims.util.isFunction(function() {})).to.be.true;
             expect(shims.util.isFunction(1)).to.be.false;
         });
 
@@ -70,7 +70,23 @@ describe('node shims', function() {
         });
     });
 
-    // this is only to check if the external deps are present. they have their own repos and should not be tested here.
+    describe('stream', function() {
+        it('should expose stream api', function() {
+            expect(shims.Stream).to.be.ok;
+            expect(shims.Stream.Duplex).to.be.ok;
+            expect(shims.Stream.Readable).to.be.ok;
+            expect(shims.Stream.Writable).to.be.ok;
+            expect(shims.Stream.Transform).to.be.ok;
+            expect(shims.Stream.PassThrough).to.be.ok;
+        });
+
+        // TODO: add real unit tests for stream!
+    });
+
+    /*
+     * this is only to check if the external deps are present. 
+     * they have their own repos and should not be tested here.
+     */
     describe('buffer', function() {
         it('should exist', function() {
             expect(shims.Buffer).to.exist;

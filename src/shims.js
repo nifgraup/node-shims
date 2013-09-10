@@ -8,6 +8,7 @@ define(function(require) {
     // internal to this repo
     shims.util = require('./node-util');
     shims.events = require('./node-events');
+    shims.Stream = require('./node-stream');
 
     // external deps
     shims.Buffer = require('buffer-browserify');
