@@ -6,7 +6,7 @@
         "name": "Felix Hammerl",
         "email": "felix@whiteout.io"
     }],
-    "main": "shims.js",
+    "main": "src/node-shims.js",
     "dependencies": {
         "amdefine": ">=0.0.8",
         "setimmediate": ">=1.0.1",
