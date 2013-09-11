@@ -12,6 +12,7 @@ define(function(require) {
     shims.tls = require('./node-tls');
     shims.Buffer = require('./node-buffer');
     shims.crypto = require('./node-crypto');
+    shims.querystring = require('./node-querystring');
 
     return shims;
 });
