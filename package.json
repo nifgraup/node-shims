@@ -9,7 +9,6 @@
     "main": "shims.js",
     "dependencies": {
         "amdefine": ">=0.0.8",
-        "crypto-browserify": "https://github.com/whiteout-io/crypto-browserify/tarball/amd",
         "setimmediate": ">=1.0.1",
         "node-forge": "0.2.4"
     },
