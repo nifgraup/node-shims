@@ -284,6 +284,36 @@ describe('node shims', function() {
             assert.equal((new B('YW9ldQ', 'base64').toString()), 'aoeu');
         });
 
+        it('indexes from a string', function() {
+            var buf = new B('abc');
+            assert.equal(buf[0], 97);
+            assert.equal(buf[1], 98);
+            assert.equal(buf[2], 99);
+        });
+
+        it('indexes from an array', function() {
+            var buf = new B([97, 98, 99]);
+            assert.equal(buf[0], 97);
+            assert.equal(buf[1], 98);
+            assert.equal(buf[2], 99);
+        });
+
+        it('set then modify indexes from an array', function() {
+            var buf = new B([97, 98, 99]);
+            assert.equal(buf[2], 99);
+            assert.equal(buf.toString(), 'abc');
+
+            buf[2] += 10;
+            assert.equal(buf[2], 109);
+            assert.equal(buf.toString(), 'abm');
+        });
+
+        it('Buffer.isEncoding', function() {
+            assert.equal(B.isEncoding('HEX'), true);
+            assert.equal(B.isEncoding('hex'), true);
+            assert.equal(B.isEncoding('bad'), false);
+        });
+
     });
 
     /*
