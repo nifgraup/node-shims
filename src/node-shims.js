@@ -13,6 +13,7 @@ define(function(require) {
     shims.Buffer = require('./node-buffer');
     shims.crypto = require('./node-crypto');
     shims.querystring = require('./node-querystring');
+    shims.url = require('./node-url');
 
     return shims;
 });
