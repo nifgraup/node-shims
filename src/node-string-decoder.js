@@ -23,7 +23,7 @@ if (typeof define !== 'function') {
     var define = require('amdefine')(module);
 }
 
-define(function() {
+define(function(require) {
     'use strict';
 
     var o = {};
@@ -36,7 +36,7 @@ define(function() {
         }
     }
 
-    var StringDecoder = exports.StringDecoder = function(encoding) {
+    var StringDecoder = function(encoding) {
         this.encoding = (encoding || 'utf8').toLowerCase().replace(/[-_]/, '');
         assertEncoding(encoding);
         switch (this.encoding) {

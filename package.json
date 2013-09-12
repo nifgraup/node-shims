@@ -17,9 +17,11 @@
         "chai": "~1.7.2",
         "grunt": "~0.4.1",
         "grunt-contrib-jshint": "~0.5.3",
-        "grunt-mocha-test": "~0.6.2"
+        "grunt-mocha-test": "~0.6.2",
+        "requirejs": "*"
     },
     "scripts": {
+        "postinstall": "./build-test.sh",
         "test": "grunt test"
     },
     "repository": {

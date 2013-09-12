@@ -68,7 +68,7 @@ if (typeof define !== 'function') {
     var define = require('amdefine')(module);
 }
 
-define(function() {
+define(function(require) {
     'use strict';
 
     var Duplex = require('./node-stream-duplex');

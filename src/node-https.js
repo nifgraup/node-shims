@@ -5,7 +5,7 @@ if (typeof define !== 'function') {
 define(function(require) {
     'use strict';
 
-    var http = require('http'),
+    var http = require('./node-http'),
         https = {};
 
     for (var key in http) {
@@ -22,4 +22,6 @@ define(function(require) {
         params.scheme = 'https';
         return http.request.call(this, params, cb);
     };
+
+    return https;
 });

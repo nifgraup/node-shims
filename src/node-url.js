@@ -22,7 +22,7 @@ if (typeof define !== 'function') {
     var define = require('amdefine')(module);
 }
 
-define(function() {
+define(function(require) {
     'use strict';
 
     var punycode = {
@@ -102,7 +102,7 @@ define(function() {
             'gopher:': true,
             'file:': true
         },
-        querystring = require('querystring');
+        querystring = require('./node-querystring');
 
     function urlParse(url, parseQueryString, slashesDenoteHost) {
         if (url && util.isObject(url) && url instanceof Url) return url;

@@ -101,7 +101,7 @@ define(function(require) {
     };
 
     each(['randomBytes', 'createCredentials', 'createCipher', 'createCipheriv', 'createDecipher', 'createDecipheriv', 'createSign', 'createVerify', 'createDiffieHellman', 'pbkdf2'], function(name) {
-        exports[name] = function() {
+        o[name] = function() {
             error('sorry,', name, 'is not implemented yet');
         };
     });

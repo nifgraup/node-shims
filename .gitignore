@@ -14,3 +14,6 @@ results
 
 node_modules
 npm-debug.log
+
+test/lib/*
+test/res/mocha.css

@@ -8,7 +8,7 @@ define(function(require) {
     'use strict';
 
     var Response = require('./node-http-response'),
-        Stream = require('stream'),
+        Stream = require('./node-stream'),
         util = require('./node-util');
 
     var Request = function(xhr, params) {

@@ -2,7 +2,7 @@ if (typeof define !== 'function') {
     var define = require('amdefine')(module);
 }
 
-define(function() {
+define(function(require) {
     'use strict';
 
     var Stream = require('./node-stream-default');

@@ -30,7 +30,7 @@ if (typeof define !== 'function') {
     var define = require('amdefine')(module);
 }
 
-define(function() {
+define(function(require) {
     'use strict';
 
     var util = require('./node-util');
