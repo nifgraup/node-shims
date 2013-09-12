@@ -1,6 +1,6 @@
 'use strict';
 
-var assert = require('assert'), // chai is incredibly stupid when it comes to deep equality, hence we use node assert here
+var assert = require('chai').assert,
     shims = require('../');
 
 describe('url', function() {
@@ -1352,14 +1352,30 @@ describe('url', function() {
                 spaced = shims.url.parse('     \t  ' + u + '\n\t'),
                 expected = parseTests[u];
 
-            Object.keys(actual).forEach(function(i) {
-                if (expected[i] === undefined && actual[i] === null) {
+
+            for (var m in actual) {
+                if (actual.hasOwnProperty(m) && expected[m] === undefined && actual[m] === null) {
+                    expected[m] = null;
+                }
+            }
+
+            for (var i in actual) {
+                if (actual[i] === null && expected[i] === undefined) {
                     expected[i] = null;
                 }
-            });
+            }
 
-            assert.deepEqual(actual, expected);
-            assert.deepEqual(spaced, expected);
+            for (var j in actual) {
+                if (actual.hasOwnProperty(j)) {
+                    assert.equal(actual[j], expected[j]);
+                }
+            }
+
+            for (var k in spaced) {
+                if (spaced.hasOwnProperty(k)) {
+                    assert.equal(spaced[k], expected[k]);
+                }
+            }
 
             expected = parseTests[u].href;
             actual = shims.url.format(parseTests[u]);
@@ -1373,11 +1389,20 @@ describe('url', function() {
             var actual = shims.url.parse(u, true);
             var expected = parseTestsWithQueryString[u];
             for (var i in actual) {
+                if (!actual.hasOwnProperty(i)) {
+                    return;
+                }
+
                 if (actual[i] === null && expected[i] === undefined) {
                     expected[i] = null;
                 }
+
+                if (shims.util.isObject(actual[i])) {
+                    assert.deepEqual(actual[i], expected[i]);
+                } else {
+                    assert.equal(actual[i], expected[i]);
+                }
             }
-            assert.deepEqual(actual, expected);
         }
     });
 
