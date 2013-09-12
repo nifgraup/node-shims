@@ -83,29 +83,6 @@ describe('node shims', function() {
         // TODO: add real unit tests for stream!
     });
 
-    describe('net', function() {
-        // this api is for now available exclusively in chrome...
-        it('should expose net api', function() {
-            expect(shims.net).to.be.ok;
-            expect(shims.net.connect).to.be.ok;
-            expect(shims.net.createConnection).to.be.ok;
-            expect(shims.net.Socket).to.be.ok;
-        });
-
-        // TODO: add real unit tests for net!
-    });
-
-    describe('tls', function() {
-        // this api is for now available exclusively in chrome...
-        it('should expose tls api', function() {
-            expect(shims.tls).to.be.ok;
-            expect(shims.tls.connect).to.be.ok;
-            expect(shims.tls.Socket).to.be.ok;
-        });
-
-        // TODO: add real unit tests for tls!
-    });
-
     describe('crypto', function() {
         var B = shims.Buffer.Buffer,
             expected = {};
@@ -2359,4 +2336,47 @@ describe('node shims', function() {
 
         });
     });
+
+    describe('net', function() {
+        // this api is for now available exclusively in chrome...
+        it('should expose net api', function() {
+            expect(shims.net).to.be.ok;
+            expect(shims.net.connect).to.be.ok;
+            expect(shims.net.createConnection).to.be.ok;
+            expect(shims.net.Socket).to.be.ok;
+        });
+
+        // TODO: add real unit tests for net!
+    });
+
+    describe('tls', function() {
+        // this api is for now available exclusively in chrome...
+        it('should expose tls api', function() {
+            expect(shims.tls).to.be.ok;
+            expect(shims.tls.connect).to.be.ok;
+            expect(shims.tls.Socket).to.be.ok;
+        });
+
+        // TODO: add real unit tests for tls!
+    });
+
+    describe('http', function() {
+        // this api is for now available exclusively in chrome...
+        it('should expose http api', function() {
+            expect(shims.http).to.be.ok;
+        });
+
+        // TODO: add real unit tests for http!
+    });
+
+    describe('https', function() {
+        // this api is for now available exclusively in chrome...
+        it('should expose https api', function() {
+            expect(shims.https).to.be.ok;
+        });
+
+        // TODO: add real unit tests for https!
+    });
+
+
 });

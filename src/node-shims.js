@@ -14,6 +14,8 @@ define(function(require) {
     shims.crypto = require('./node-crypto');
     shims.querystring = require('./node-querystring');
     shims.url = require('./node-url');
+    shims.http = require('./node-http');
+    shims.https = require('./node-https');
 
     return shims;
 });
