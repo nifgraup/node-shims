@@ -13,7 +13,8 @@ define(function(require) {
 
     var net = {},
         util = require('./node-util'),
-        Stream = require('./node-stream');
+        Stream = require('./node-stream'),
+        Buffer = require('./node-buffer').Buffer;
 
     /*
      * net.Socket
