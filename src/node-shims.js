@@ -15,7 +15,6 @@ define(function(require) {
     shims.querystring = require('./node-querystring');
     shims.url = require('./node-url');
     shims.http = require('./node-http');
-    shims.https = require('./node-https');
 
     return shims;
 });

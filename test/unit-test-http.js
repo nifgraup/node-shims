@@ -9,15 +9,6 @@ define(function(require) {
         shims = require('../src/node-shims'),
         port = 8082;
 
-    describe('https', function() {
-        // this api is for now available exclusively in chrome...
-        it('should expose https api', function() {
-            expect(shims.https).to.be.ok;
-        });
-
-        // TODO: add real unit tests for https!
-    });
-
     describe('http', function() {
         // this api is for now available exclusively in chrome...
         it('should expose http api', function() {
