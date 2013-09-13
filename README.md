@@ -13,3 +13,13 @@ This repo can be used as a drop-in replacement for the node builtins:
 To run the tests, do the following
 
     > npm install && npm test
+
+To run the tests in the browser as a chrome packaged app, do the following
+
+    > node test-server.js
+
+    open chrome
+    go to chrome://extensions/ 
+    activate developer mode
+    load node-shims as unpacked extension
+    watch the tests pass
