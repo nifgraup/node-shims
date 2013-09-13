@@ -16,6 +16,51 @@ define(function(require) {
             expect(shims.tls.Socket).to.be.ok;
         });
 
-        // TODO: add real unit tests for tls!
+        if (typeof window === 'undefined') {
+            return;
+        }
+
+        it('should connect the socket', function(done) {
+            var connection = shims.tls.connect(443, 'google.com', {}, function() {});
+            connection.on('connect', done);
+        });
+
+        describe("tls live connection", function() {
+            var connection;
+
+            beforeEach(function(done) {
+                connection = shims.tls.connect(443, 'google.com', {}, function() {});
+                connection.on('connect', done);
+            });
+
+            it('should setKeepAlive', function() {
+                connection.setKeepAlive(true);
+            });
+
+            it('should setTimeout', function() {
+                connection.setTimeout(10000, function() {});
+            });
+
+            it('should write and read from connection', function(done) {
+                var html = '',
+                    str;
+
+                connection.on('data', function(chunk) {
+                    html += chunk.toString('utf8');
+                    str = html.toLowerCase();
+                    if (str.indexOf('</html>') !== -1) {
+                        expect(html).to.be.ok;
+                        done();
+                    }
+                });
+
+                connection.write('GET / HTTP/1.0\r\n\r\n');
+            });
+
+            it('should end tls socket', function() {
+                connection.end();
+            });
+
+        });
     });
 });

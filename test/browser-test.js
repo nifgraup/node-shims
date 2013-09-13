@@ -1,9 +1,11 @@
 require.config({
-    baseUrl: '../',
+    baseUrl: '../lib',
     paths: {
-        'node-forge': 'lib/forge.min',
-        'chai': 'lib/chai',
-        'setimmediate': 'lib/setImmediate'
+        'test': '..',
+        'src':'../../src',
+        'node-forge': 'forge',
+        'chai': 'chai',
+        'setimmediate': 'setImmediate'
     }
 });
 
@@ -12,7 +14,7 @@ require([], function() {
 
     mocha.setup('bdd');
 
-    require(['unit-test-buffer', 'unit-test-crypto', 'unit-test-http', 'unit-test-net', 'unit-test-querystring', 'unit-test-stream', 'unit-test-tls', 'unit-test-url', 'unit-test-util'], function() {
+    require(['test/unit-test-buffer', 'test/unit-test-crypto', 'test/unit-test-http', 'test/unit-test-net', 'test/unit-test-querystring', 'test/unit-test-stream', 'test/unit-test-tls', 'test/unit-test-url', 'test/unit-test-util'], function() {
         mocha.run();
         mocha.checkLeaks();
     });

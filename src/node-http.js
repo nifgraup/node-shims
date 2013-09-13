@@ -20,7 +20,7 @@ define(function(require) {
             params.port = window.location.port;
         }
         if (!params.scheme) {
-            params.scheme = window.location.protocol.split(':')[0];
+            params.scheme = 'http';
         }
 
         var req = new Request(new XMLHttpRequest(), params);
@@ -72,5 +72,5 @@ define(function(require) {
     //     }
     // })();
 
-    return {};
+    return http;
 });

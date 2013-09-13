@@ -20,10 +20,7 @@ define(function(require) {
         self.body = [];
 
         var uri = params.host + (params.port ? ':' + params.port : '') + (params.path || '/');
-        xhr.open(
-            params.method || 'GET', (params.scheme || 'http') + '://' + uri,
-            true
-        );
+        xhr.open(params.method || 'GET', (params.scheme || 'http') + '://' + uri, true);
 
         if (params.headers) {
             var keys = objectKeys(params.headers);
@@ -61,7 +58,7 @@ define(function(require) {
             res.handle(xhr);
         };
     };
-    util.inherits(Response, Stream);
+    util.inherits(Request, Stream);
 
     Request.prototype.setHeader = function(key, value) {
         if (isArray(value)) {

@@ -15,6 +15,7 @@ define(function(require) {
         util = require('./node-util'),
         Stream = require('./node-stream'),
         net = require('./node-net'),
+        Buffer = require('./node-buffer').Buffer,
         forge = require('node-forge');
 
 
