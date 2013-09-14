@@ -2,8 +2,6 @@
 
 echo "> copying dependencies for browser testing\n"
 
-cd `dirname $0`
-
 cp -v node_modules/chai/chai.js test/lib/
 cp -v node_modules/mocha/mocha.js test/lib/
 cp -v node_modules/mocha/mocha.css test/res/
