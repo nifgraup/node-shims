@@ -16,7 +16,7 @@ define(function(require) {
         Stream = require('./node-stream'),
         net = require('./node-net'),
         Buffer = require('./node-buffer').Buffer,
-        forge = require('node-forge');
+        forge = require('node-forge')({disableNativeCode: true});
 
 
     tls.connect = function(port, host, options, listener) {
