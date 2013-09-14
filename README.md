@@ -12,10 +12,13 @@ This repo can be used as a drop-in replacement for the node builtins:
 
 To run the tests, do the following
 
-    > npm install && npm test
+    > npm install
+    > npm test
 
 To run the tests in the browser as a chrome packaged app, do the following
 
+    > npm install
+    > ./build-test.sh
     > node test-server.js
 
     open chrome

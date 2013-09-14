@@ -21,7 +21,6 @@
         "requirejs": "*"
     },
     "scripts": {
-        "postinstall": "./build-test.sh",
         "test": "grunt test"
     },
     "repository": {
