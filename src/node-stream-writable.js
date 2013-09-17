@@ -1,5 +1,3 @@
-// node.js v0.11.7
-
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a

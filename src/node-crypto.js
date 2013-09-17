@@ -1,5 +1,3 @@
-// credits go to https://github.com/dominictarr/crypto-browserify
-
 if (typeof define !== 'function') {
     var define = require('amdefine')(module);
 }
@@ -100,21 +98,9 @@ define(function(require) {
         };
     };
 
-    each(['randomBytes', 'createCredentials', 'createCipher', 'createCipheriv', 'createDecipher', 'createDecipheriv', 'createSign', 'createVerify', 'createDiffieHellman', 'pbkdf2'], function(name) {
-        o[name] = function() {
-            error('sorry,', name, 'is not implemented yet');
-        };
-    });
-
     function error() {
         var m = [].slice.call(arguments).join(' ');
         throw new Error([m, ' ... we accept pull requests. http://github.com/dominictarr/crypto-browserify'].join('\n'));
-    }
-
-    function each(a, f) {
-        for (var i in a) {
-            f(a[i], i);
-        }
     }
 
     return o;

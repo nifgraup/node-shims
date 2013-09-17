@@ -1,3 +1,12 @@
+/*
+ * A JavaScript implementation of the Secure Hash Algorithm, SHA-1, as defined
+ * in FIPS 180-1
+ * Version 2.2 Copyright Paul Johnston 2000 - 2009.
+ * Other contributors: Greg Holt, Andrew Kepert, Ydnar, Lostinet
+ * Distributed under the BSD License
+ * See http://pajhome.org.uk/crypt/md5 for details.
+ */
+
 if (typeof define !== 'function') {
   var define = require('amdefine')(module);
 }
@@ -8,14 +17,6 @@ define(function(require) {
   var o = {};
 
 
-  /*
-   * A JavaScript implementation of the Secure Hash Algorithm, SHA-1, as defined
-   * in FIPS PUB 180-1
-   * Version 2.1a Copyright Paul Johnston 2000 - 2002.
-   * Other contributors: Greg Holt, Andrew Kepert, Ydnar, Lostinet
-   * Distributed under the BSD License
-   * See http://pajhome.org.uk/crypt/md5 for details.
-   */
 
   /*
    * Configurable variables. You may need to tweak these to be compatible with
