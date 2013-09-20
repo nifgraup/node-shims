@@ -276,12 +276,12 @@ define(function(require) {
         return str;
     }
 
-    o.hex_md5 = hex_md5;
-    o.b64_md5 = b64_md5;
-    o.bin_md5 = str_md5;
-    o.hex_hmac_md5 = hex_hmac_md5;
-    o.b64_hmac_md5 = b64_hmac_md5;
-    o.bin_hmac_md5 = str_hmac_md5;
+    o.hex_hash = hex_md5;
+    o.base64_hash = b64_md5;
+    o.binary_hash = str_md5;
+    o.hex_hmac = hex_hmac_md5;
+    o.base64_hmac = b64_hmac_md5;
+    o.binary_hmac = str_hmac_md5;
 
     return o;
 });

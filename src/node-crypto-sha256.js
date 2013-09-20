@@ -221,12 +221,12 @@ define(function(require) {
   };
 
 
-  o.hex_sha256 = hex_sha256;
-  o.b64_sha256 = b64_sha256;
-  o.str_sha256 = str_sha256;
-  o.hex_hmac_sha256 = hex_hmac_sha256;
-  o.b64_hmac_sha256 = b64_hmac_sha256;
-  o.str_hmac_sha256 = str_hmac_sha256;
+  o.hex_hash = hex_sha256;
+  o.base64_hash = b64_sha256;
+  o.binary_hash = str_sha256;
+  o.hex_hmac = hex_hmac_sha256;
+  o.base64_hmac = b64_hmac_sha256;
+  o.binary_hmac = str_hmac_sha256;
 
   return o;
 });

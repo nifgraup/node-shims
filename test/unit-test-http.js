@@ -1,3 +1,7 @@
+// License: MIT/X11
+// original author: James Halliday (https://github.com/substack)
+// see https://github.com/substack/http-browserify
+
 if (typeof define !== 'function') {
     var define = require('amdefine')(module);
 }

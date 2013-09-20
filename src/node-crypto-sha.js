@@ -223,12 +223,12 @@ define(function(require) {
     return str;
   }
 
-  o.hex_sha1 = hex_sha1;
-  o.b64_sha1 = b64_sha1;
-  o.str_sha1 = str_sha1;
-  o.hex_hmac_sha1 = hex_hmac_sha1;
-  o.b64_hmac_sha1 = b64_hmac_sha1;
-  o.str_hmac_sha1 = str_hmac_sha1;
+  o.hex_hash = hex_sha1;
+  o.base64_hash = b64_sha1;
+  o.binary_hash = str_sha1;
+  o.hex_hmac = hex_hmac_sha1;
+  o.base64_hmac = b64_hmac_sha1;
+  o.binary_hmac = str_hmac_sha1;
 
   return o;
 

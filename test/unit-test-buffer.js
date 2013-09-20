@@ -1,3 +1,7 @@
+// License: MIT/X11
+// original author: Romain Beauxis (https://github.com/toots)
+// see: https://github.com/toots/buffer-browserify/
+
 if (typeof define !== 'function') {
     var define = require('amdefine')(module);
 }
