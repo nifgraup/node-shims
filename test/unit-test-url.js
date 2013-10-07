@@ -29,8 +29,13 @@ define(function(require) {
     var chai = require('chai'),
         assert = chai.assert,
         shims = require('../src/node-shims');
-    
+
     chai.Assertion.includeStack = true;
+
+    if (typeof window === 'undefined') {
+        // no need to test the native implementation here...
+        return;
+    }
 
     describe('url', function() {
 
