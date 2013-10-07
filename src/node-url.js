@@ -106,7 +106,7 @@ define(function(require) {
         querystring = require('./node-querystring');
 
     function urlParse(url, parseQueryString, slashesDenoteHost) {
-        if (url && util.isObject(url) && url instanceof Url) return url;
+        if (url && typeof url === 'object' && url !== null && url instanceof Url) return url;
 
         var u = new Url;
         u.parse(url, parseQueryString, slashesDenoteHost);
@@ -384,7 +384,7 @@ define(function(require) {
         }
 
         if (this.query &&
-            util.isObject(this.query) &&
+            typeof this.query === 'object' && this.query !== null &&
             Object.keys(this.query).length) {
             query = querystring.stringify(this.query);
         }
@@ -568,7 +568,7 @@ define(function(require) {
             srcPath = srcPath.concat(relPath);
             result.search = relative.search;
             result.query = relative.query;
-        } else if (!util.isNullOrUndefined(relative.search)) {
+        } else if (!(typeof relative.search === 'undefined' || relative.search === null)) {
             // just pull out the search.
             // like href='?foo'.
             // Put this after the other two cases because it simplifies the booleans
@@ -587,7 +587,7 @@ define(function(require) {
             result.search = relative.search;
             result.query = relative.query;
             //to support http.request
-            if (!util.isNull(result.pathname) || !util.isNull(result.search)) {
+            if (result.pathname !== null || result.search !== null) {
                 result.path = (result.pathname ? result.pathname : '') +
                     (result.search ? result.search : '');
             }

@@ -22,6 +22,7 @@ define(function(require) {
         });
 
         if (typeof window === 'undefined') {
+            // no need to test the native implementation here...
             return;
         }
 

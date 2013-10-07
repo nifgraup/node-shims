@@ -33,10 +33,10 @@ define(function(require) {
         it('should expose tls api', function() {
             expect(shims.tls).to.be.ok;
             expect(shims.tls.connect).to.be.ok;
-            expect(shims.tls.Socket).to.be.ok;
         });
 
         if (typeof window === 'undefined') {
+            // no need to test the native implementation here...
             return;
         }
 

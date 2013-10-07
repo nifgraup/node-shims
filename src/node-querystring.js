@@ -119,13 +119,13 @@ define(function(require) {
     };
 
     var stringifyPrimitive = function(v) {
-        if (util.isString(v)) {
+        if (typeof v === 'string') {
             return v;
         }
-        if (util.isBoolean(v)) {
+        if (typeof v === 'boolean') {
             return v ? 'true' : 'false';
         }
-        if (util.isNumber(v)) {
+        if (typeof v === 'number') {
             return isFinite(v) ? v : '';
         }
         return '';
@@ -135,11 +135,11 @@ define(function(require) {
     QueryString.stringify = QueryString.encode = function(obj, sep, eq, name) {
         sep = sep || '&';
         eq = eq || '=';
-        if (util.isNull(obj)) {
+        if (obj === null) {
             obj = undefined;
         }
 
-        if (util.isObject(obj)) {
+        if (typeof obj === 'object' && obj !== null) {
             return Object.keys(obj).map(function(k) {
                 var ks = QueryString.escape(stringifyPrimitive(k)) + eq;
                 if (util.isArray(obj[k])) {

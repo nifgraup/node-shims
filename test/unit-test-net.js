@@ -39,11 +39,6 @@ define(function(require) {
             expect(shims.net.Socket).to.be.ok;
         });
 
-        if (typeof window === 'undefined') {
-            // we're in node mode, stop here...
-            return;
-        }
-
         describe('net.connect', function() {
             it('should connect with options', function(done) {
                 var socket = shims.net.connect({
@@ -62,6 +57,11 @@ define(function(require) {
             });
 
             it('should not connect with unix sockets', function() {
+                if (typeof window === 'undefined') {
+                    // node api supports this, but the shims don't
+                    return;
+                }
+
                 var errorThrown = false;
                 try {
                     shims.net.connect('/foobar');
@@ -82,6 +82,11 @@ define(function(require) {
                 });
 
                 it('should not create socket with options', function() {
+                    if (typeof window === 'undefined') {
+                        // node api supports this, but the shims don't
+                        return;
+                    }
+
                     var errorThrown = false,
                         socket;
                     try {
@@ -109,6 +114,11 @@ define(function(require) {
                     });
                 });
                 it('should not connect with unix sockets', function() {
+                    if (typeof window === 'undefined') {
+                        // node api supports this, but the shims don't
+                        return;
+                    }
+
                     var errorThrown = false;
                     try {
                         socket.connect('/foobar');
@@ -146,7 +156,7 @@ define(function(require) {
                     socket.end();
                 });
                 it('should write the data to echo server and then close', function(done) {
-                    socket.on('close', done);
+                    socket.on('end', done);
                     socket.end('ai;vbev;iaebv');
                 });
             });

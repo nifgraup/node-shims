@@ -65,7 +65,7 @@ define(function(require) {
         // If there is no 'error' event listener then throw.
         if (type === 'error') {
             if (!this._events.error ||
-                (util.isObject(this._events.error) && !this._events.error.length)) {
+                (isObject(this._events.error) && !this._events.error.length)) {
                 er = arguments[1];
                 if (er instanceof Error) {
                     throw er; // Unhandled 'error' event
@@ -78,10 +78,10 @@ define(function(require) {
 
         handler = this._events[type];
 
-        if (util.isUndefined(handler))
+        if (typeof handler === 'undefined')
             return false;
 
-        if (util.isFunction(handler)) {
+        if (typeof handler === 'function') {
             switch (arguments.length) {
                 // fast cases
                 case 1:
@@ -101,7 +101,7 @@ define(function(require) {
                         args[i - 1] = arguments[i];
                     handler.apply(this, args);
             }
-        } else if (util.isObject(handler)) {
+        } else if (isObject(handler)) {
             len = arguments.length;
             args = new Array(len - 1);
             for (i = 1; i < len; i++)
@@ -119,7 +119,7 @@ define(function(require) {
     EventEmitter.prototype.addListener = function(type, listener) {
         var m;
 
-        if (!util.isFunction(listener))
+        if (typeof listener !== 'function')
             throw TypeError('listener must be a function');
 
         if (!this._events)
@@ -129,13 +129,13 @@ define(function(require) {
         // adding it to the listeners, first emit "newListener".
         if (this._events.newListener)
             this.emit('newListener', type,
-                util.isFunction(listener.listener) ?
+                (typeof listener.listener === 'function') ?
                 listener.listener : listener);
 
         if (!this._events[type])
         // Optimize the case of one listener. Don't need the extra array object.
             this._events[type] = listener;
-        else if (util.isObject(this._events[type]))
+        else if (isObject(this._events[type]))
         // If we've already got an array, just append.
             this._events[type].push(listener);
         else
@@ -143,9 +143,9 @@ define(function(require) {
             this._events[type] = [this._events[type], listener];
 
         // Check for listener leak
-        if (util.isObject(this._events[type]) && !this._events[type].warned) {
+        if (isObject(this._events[type]) && !this._events[type].warned) {
             var m;
-            if (!util.isUndefined(this._maxListeners)) {
+            if (typeof this._maxListeners !== 'undefined') {
                 m = this._maxListeners;
             } else {
                 m = EventEmitter.defaultMaxListeners;
@@ -167,7 +167,7 @@ define(function(require) {
     EventEmitter.prototype.on = EventEmitter.prototype.addListener;
 
     EventEmitter.prototype.once = function(type, listener) {
-        if (!util.isFunction(listener))
+        if (typeof listener !== 'function')
             throw TypeError('listener must be a function');
 
         function g() {
@@ -185,7 +185,7 @@ define(function(require) {
     EventEmitter.prototype.removeListener = function(type, listener) {
         var list, position, length, i;
 
-        if (!util.isFunction(listener))
+        if (typeof listener !== 'function')
             throw TypeError('listener must be a function');
 
         if (!this._events || !this._events[type])
@@ -196,12 +196,12 @@ define(function(require) {
         position = -1;
 
         if (list === listener ||
-            (util.isFunction(list.listener) && list.listener === listener)) {
+            (typeof list.listener === 'function' && list.listener === listener)) {
             delete this._events[type];
             if (this._events.removeListener)
                 this.emit('removeListener', type, listener);
 
-        } else if (util.isObject(list)) {
+        } else if (isObject(list)) {
             for (i = length; i-- > 0;) {
                 if (list[i] === listener ||
                     (list[i].listener && list[i].listener === listener)) {
@@ -255,7 +255,7 @@ define(function(require) {
 
         listeners = this._events[type];
 
-        if (util.isFunction(listeners)) {
+        if (typeof listeners !== 'function') {
             this.removeListener(type, listeners);
         } else {
             // LIFO order
@@ -271,7 +271,7 @@ define(function(require) {
         var ret;
         if (!this._events || !this._events[type])
             ret = [];
-        else if (util.isFunction(this._events[type]))
+        else if (typeof this._events[type] === 'function')
             ret = [this._events[type]];
         else
             ret = this._events[type].slice();
@@ -282,12 +282,16 @@ define(function(require) {
         var ret;
         if (!emitter._events || !emitter._events[type])
             ret = 0;
-        else if (util.isFunction(emitter._events[type]))
+        else if (typeof emitter._events[type] === 'function')
             ret = 1;
         else
             ret = emitter._events[type].length;
         return ret;
     };
+
+    function isObject(arg) {
+        return typeof arg === 'object' && arg !== null;
+    }
 
     return o;
 });

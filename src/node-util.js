@@ -84,16 +84,6 @@ define(function() {
     }
     util.isUndefined = isUndefined;
 
-    function isObject(arg) {
-        return typeof arg === 'object' && arg !== null;
-    }
-    util.isObject = isObject;
-
-    function isFunction(arg) {
-        return typeof arg === 'function';
-    }
-    util.isFunction = isFunction;
-
     function isPrimitive(arg) {
         return arg === null ||
             typeof arg === 'boolean' ||
