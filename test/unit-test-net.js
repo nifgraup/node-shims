@@ -39,6 +39,11 @@ define(function(require) {
             expect(shims.net.Socket).to.be.ok;
         });
 
+        if (typeof window === 'undefined') {
+            // no need to test the native implementation here...
+            return;
+        }
+
         describe('net.connect', function() {
             it('should connect with options', function(done) {
                 var socket = shims.net.connect({
