@@ -26,9 +26,9 @@ define(function(require) {
     'use strict';
 
     var Buffer = require('./node-buffer').Buffer,
-        sha1 = require('./node-crypto-sha'),
-        sha256 = require('./node-crypto-sha256'),
-        md5 = require('./node-crypto-md5'),
+        forge = require('node-forge')({
+            disableNativeCode: true
+        }),
         o = {};
 
     o.createHash = function(algorithm) {
@@ -36,13 +36,22 @@ define(function(require) {
             throw new Error('must give hashtype string as argument');
         }
 
-        var hash = {
-            _algorithm: algorithm,
-            _hashContent: ''
-        };
+        var hash = {};
+
+        switch (algorithm) {
+        case 'sha1':
+            hash._md = forge.md.sha1.create();
+            break;
+        case 'sha256':
+            hash._md = forge.md.sha256.create();
+            break;
+        case 'md5':
+            hash._md = forge.md.md5.create();
+            break;
+        }
 
         hash.update = function(data, encoding) {
-            if (this._hashContent === null) {
+            if (this._md === null) {
                 throw new Error('hash update fails! you are not meant to use the hash after you have called digest.');
             } else if (!(typeof data === 'string' || data instanceof Buffer)) {
                 throw new Error('hash update fails! data is not a string or a buffer.');
@@ -50,25 +59,28 @@ define(function(require) {
 
             encoding = encoding || 'binary';
 
-            this._hashContent += data instanceof Buffer ? data.toString(encoding) : data.toString();
+            var content = data instanceof Buffer ? data.toString(encoding) : data;
+            this._md.update(content);
+
             return this;
         };
 
         hash.digest = function(encoding) {
-            if (this._hashContent === null) {
+            if (this._md === null) {
                 throw new Error('not initialized! you are not meant to use the hash after you have called digest.');
             }
-            
-            var value;
 
-            encoding = encoding || 'binary';
-            value = selectAlgorithm({
-                type: 'hash',
-                algorithm: this._algorithm,
-                encoding: encoding
-            })(this._hashContent);
-            this._hashContent = null;
-            return value;
+            var digest = this._md.digest();
+            this._md = null;
+
+            switch(encoding) {
+            case 'hex':
+                return digest.toHex();
+            case 'binary':
+                return digest.getBytes();
+            case 'base64':
+                return forge.util.encode64(digest.getBytes());
+            }
         };
 
         return hash;
@@ -84,69 +96,43 @@ define(function(require) {
         }
 
         var hmac = {
-            _algorithm: algorithm,
-            _key: key,
-            _hashContent: ''
+            _hmac: forge.hmac.create()
         };
 
+        hmac._hmac.start(algorithm, key);
+
         hmac.update = function(data) {
-            if (this._hashContent === null) {
+            if (this._hmac === null) {
                 throw new Error('hash update fails! you are not meant to use the hash after you have called digest.');
             } else if (!(typeof data === 'string' || data instanceof Buffer)) {
                 throw new Error('hash update fails! data is not a string or a buffer.');
             }
 
-            this._hashContent += data instanceof Buffer ? data.toString('binary') : data.toString();
+            var content = data instanceof Buffer ? data.toString('binary') : data.toString();
+            this._hmac.update(content);
             return this;
         };
 
         hmac.digest = function(encoding) {
-            if (this._hashContent === null) {
+            if (this._hmac === null) {
                 throw new Error('not initialized! you are not meant to use the hash after you have called digest.');
             }
             
-            var value;
+            var digest = this._hmac.digest();
+            this._hmac = null;
 
-            encoding = encoding || 'binary';
-            value = selectAlgorithm({
-                type: 'hmac',
-                algorithm: this._algorithm,
-                encoding: encoding
-            })(this._key, this._hashContent);
-            this._hashContent = null;
-            return value;
+            switch(encoding) {
+            case 'hex':
+                return digest.toHex();
+            case 'binary':
+                return digest.getBytes();
+            case 'base64':
+                return forge.util.encode64(digest.getBytes());
+            }
         };
 
         return hmac;
     };
-
-    function selectAlgorithm(options) {
-        var alg;
-
-        if (options.type !== 'hash' && options.type !== 'hmac') {
-            throw new Error('type not supported');
-        } else if (options.encoding !== 'hex' && options.encoding !== 'binary' && options.encoding !== 'base64') {
-            throw new Error('type not supported');
-        }
-
-
-        switch (options.algorithm) {
-        case 'sha1':
-            alg = sha1;
-            break;
-        case 'sha256':
-            alg = sha256;
-            break;
-        case 'md5':
-            alg = md5;
-            break;
-        default:
-            throw new Error('algorithm not supported');
-
-        }
-
-        return alg[options.encoding + '_' + options.type];
-    }
 
     return o;
 });

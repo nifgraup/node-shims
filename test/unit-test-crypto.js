@@ -38,54 +38,54 @@ define(function(require) {
         expectedValue['md5-hmac-base64'] = 'ut5jhjxh7QsxZYBuzWrO/A==';
 
         it('sha1 hash using binary', function() {
-            var actual = shims.crypto.createHash('sha1').update('hello', 'utf-8').digest('binary');
+            var actual = shims.crypto.createHash('sha1').update('hello', 'utf8').digest('binary');
             var exp = expectedValue['sha1-hash-binary'];
             assert.equal(actual, exp);
         });
 
         it('sha1 hash using binary with buffer', function() {
-            var actual = shims.crypto.createHash('sha1').update(new B('hello', 'utf-8')).digest('binary');
+            var actual = shims.crypto.createHash('sha1').update(new B('hello', 'utf8')).digest('binary');
             var exp = expectedValue['sha1-hash-binary'];
             assert.equal(actual, exp);
         });
 
         it('sha1 hmac using binary', function() {
-            var actual = shims.crypto.createHmac('sha1', 'secret').update('hello', 'utf-8').digest('binary');
+            var actual = shims.crypto.createHmac('sha1', 'secret').update('hello', 'utf8').digest('binary');
             var exp = expectedValue['sha1-hmac-binary'];
             assert.equal(actual, exp);
         });
 
         it('sha1 hmac using binary with buffer', function() {
-            var actual = shims.crypto.createHmac('sha1', 'secret').update(new B('hello', 'utf-8')).digest('binary');
+            var actual = shims.crypto.createHmac('sha1', 'secret').update(new B('hello', 'utf8')).digest('binary');
             var exp = expectedValue['sha1-hmac-binary'];
             assert.equal(actual, exp);
         });
 
         it('sha1 hash using hex', function() {
-            var actual = shims.crypto.createHash('sha1').update('hello', 'utf-8').digest('hex');
+            var actual = shims.crypto.createHash('sha1').update('hello', 'utf8').digest('hex');
             var exp = expectedValue['sha1-hash-hex'];
             assert.equal(actual, exp);
         });
 
         it('sha1 hmac using hex', function() {
-            var actual = shims.crypto.createHmac('sha1', 'secret').update('hello', 'utf-8').digest('hex');
+            var actual = shims.crypto.createHmac('sha1', 'secret').update('hello', 'utf8').digest('hex');
             var exp = expectedValue['sha1-hmac-hex'];
             assert.equal(actual, exp);
         });
 
         it('sha1 hash using base64', function() {
-            var actual = shims.crypto.createHash('sha1').update('hello', 'utf-8').digest('base64');
+            var actual = shims.crypto.createHash('sha1').update('hello', 'utf8').digest('base64');
             var exp = expectedValue['sha1-hash-base64'];
             assert.equal(actual, exp);
         });
 
         it('sha1 hmac using base64', function() {
-            var actual = shims.crypto.createHmac('sha1', 'secret').update('hello', 'utf-8').digest('base64');
+            var actual = shims.crypto.createHmac('sha1', 'secret').update('hello', 'utf8').digest('base64');
             var exp = expectedValue['sha1-hmac-base64'];
             assert.equal(actual, exp);
         });
         it('sha1 with empty string', function() {
-            var actual = shims.crypto.createHash('sha1').update('', 'utf-8').digest('hex');
+            var actual = shims.crypto.createHash('sha1').update('', 'utf8').digest('hex');
             var exp = expectedValue['sha1-empty-string'];
             assert.equal(actual, exp);
         });
@@ -101,43 +101,43 @@ define(function(require) {
         });
 
         it('sha256 hash using binary', function() {
-            var actual = shims.crypto.createHash('sha256').update('hello', 'utf-8').digest('binary');
+            var actual = shims.crypto.createHash('sha256').update('hello', 'utf8').digest('binary');
             var exp = expectedValue['sha256-hash-binary'];
             assert.equal(actual, exp);
         });
 
         it('sha256 hmac using binary', function() {
-            var actual = shims.crypto.createHmac('sha256', 'secret').update('hello', 'utf-8').digest('binary');
+            var actual = shims.crypto.createHmac('sha256', 'secret').update('hello', 'utf8').digest('binary');
             var exp = expectedValue['sha256-hmac-binary'];
             assert.equal(actual, exp);
         });
 
         it('sha256 hash using hex', function() {
-            var actual = shims.crypto.createHash('sha256').update('hello', 'utf-8').digest('hex');
+            var actual = shims.crypto.createHash('sha256').update('hello', 'utf8').digest('hex');
             var exp = expectedValue['sha256-hash-hex'];
             assert.equal(actual, exp);
         });
 
         it('sha256 hmac using hex', function() {
-            var actual = shims.crypto.createHmac('sha256', 'secret').update('hello', 'utf-8').digest('hex');
+            var actual = shims.crypto.createHmac('sha256', 'secret').update('hello', 'utf8').digest('hex');
             var exp = expectedValue['sha256-hmac-hex'];
             assert.equal(actual, exp);
         });
 
         it('sha256 hash using base64', function() {
-            var actual = shims.crypto.createHash('sha256').update('hello', 'utf-8').digest('base64');
+            var actual = shims.crypto.createHash('sha256').update('hello', 'utf8').digest('base64');
             var exp = expectedValue['sha256-hash-base64'];
             assert.equal(actual, exp);
         });
 
         it('sha256 hmac using base64', function() {
-            var actual = shims.crypto.createHmac('sha256', 'secret').update('hello', 'utf-8').digest('base64');
+            var actual = shims.crypto.createHmac('sha256', 'secret').update('hello', 'utf8').digest('base64');
             var exp = expectedValue['sha256-hmac-base64'];
             assert.equal(actual, exp);
         });
 
         it('sha256 with empty string', function() {
-            var actual = shims.crypto.createHash('sha256').update('', 'utf-8').digest('hex');
+            var actual = shims.crypto.createHash('sha256').update('', 'utf8').digest('hex');
             var exp = expectedValue['sha256-empty-string'];
             assert.equal(actual, exp);
         });
@@ -153,43 +153,43 @@ define(function(require) {
         });
 
         it('md5 hash using binary', function() {
-            var actual = shims.crypto.createHash('md5').update('hello', 'utf-8').digest('binary');
+            var actual = shims.crypto.createHash('md5').update('hello', 'utf8').digest('binary');
             var exp = expectedValue['md5-hash-binary'];
             assert.equal(actual, exp);
         });
 
         it('md5 hmac using binary', function() {
-            var actual = shims.crypto.createHmac('md5', 'secret').update('hello', 'utf-8').digest('binary');
+            var actual = shims.crypto.createHmac('md5', 'secret').update('hello', 'utf8').digest('binary');
             var exp = expectedValue['md5-hmac-binary'];
             assert.equal(actual, exp);
         });
 
         it('md5 hash using hex', function() {
-            var actual = shims.crypto.createHash('md5').update('hello', 'utf-8').digest('hex');
+            var actual = shims.crypto.createHash('md5').update('hello', 'utf8').digest('hex');
             var exp = expectedValue['md5-hash-hex'];
             assert.equal(actual, exp);
         });
 
         it('md5 hmac using hex', function() {
-            var actual = shims.crypto.createHmac('md5', 'secret').update('hello', 'utf-8').digest('hex');
+            var actual = shims.crypto.createHmac('md5', 'secret').update('hello', 'utf8').digest('hex');
             var exp = expectedValue['md5-hmac-hex'];
             assert.equal(actual, exp);
         });
 
         it('md5 hash using base64', function() {
-            var actual = shims.crypto.createHash('md5').update('hello', 'utf-8').digest('base64');
+            var actual = shims.crypto.createHash('md5').update('hello', 'utf8').digest('base64');
             var exp = expectedValue['md5-hash-base64'];
             assert.equal(actual, exp);
         });
 
         it('md5 hmac using base64', function() {
-            var actual = shims.crypto.createHmac('md5', 'secret').update('hello', 'utf-8').digest('base64');
+            var actual = shims.crypto.createHmac('md5', 'secret').update('hello', 'utf8').digest('base64');
             var exp = expectedValue['md5-hmac-base64'];
             assert.equal(actual, exp);
         });
 
         it('md5 with empty string', function() {
-            var actual = shims.crypto.createHash('md5').update('', 'utf-8').digest('hex');
+            var actual = shims.crypto.createHash('md5').update('', 'utf8').digest('hex');
             var exp = expectedValue['md5-empty-string'];
             assert.equal(actual, exp);
         });

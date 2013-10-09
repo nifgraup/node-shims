@@ -53,6 +53,6 @@ If not stated otherwise, the contents of this library are MIT licensed.
 
 * node-tls uses crypto primitives from Forge by [Digital Bazaar, Inc.](https://github.com/digitalbazaar) which is licensed under BSD and GPL.
 * node-buffer was originally written by [Romain Beauxis](https://github.com/toots), [see here](https://github.com/toots/buffer-browserify/), licensed under MIT/X11 license.
-* node-crypto was originally published by [Paul Johnston](http://pajhome.org.uk/), [see here](http://pajhome.org.uk/crypt/md5/), licensed under BSD license.
+* node-crypto uses crypto primitives from [Forge](https://github.com/digitalbazaar/forge) by Digital Bazaar, Inc.,  licensed under [BSD and GPL](https://github.com/digitalbazaar/forge/blob/master/LICENSE) license.
 * node-http was originally written by [James Halliday](https://github.com/substack), [see here](https://github.com/substack/http-browserify), licensed under MIT/X11 license.
 * node-events, node-stream, node-string-decoder and node-url was originally written by [Joyent, Inc.](https://github.com/joyent) and other Node contributors, [see here](https://github.com/joyent/node), licensed under MIT license.
