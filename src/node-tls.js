@@ -30,7 +30,9 @@ define(function(require) {
         Stream = require('./node-stream'),
         net = require('./node-net'),
         Buffer = require('./node-buffer').Buffer,
-        forge = require('node-forge')({disableNativeCode: true});
+        forge = require('node-forge')({
+            disableNativeCode: true
+        });
 
 
     tls.connect = function(port, host, options, listener) {
@@ -78,7 +80,8 @@ define(function(require) {
      */
     tls.Socket.prototype.connect = function(port, host, options, listener) {
         var self = this,
-            data, buffer;
+            data, buffer,
+            pinnedCert;
 
         if (!port || !host || !options || !listener) {
             throw {
@@ -92,15 +95,28 @@ define(function(require) {
             forge = window.forge;
         }
 
+        // convert a Forge certificate from pinned PEM
+        if (options.ca) {
+            if (options.ca.length === 1) {
+                pinnedCert = forge.pki.certificateFromPem(options.ca[0]);
+            } else {
+                throw {
+                    name: 'UnsupportedApiException',
+                    message: 'Only one certitificate is supported for pinning!'
+                };
+            }
+        }
+
         self._tlsClient = forge.tls.createConnection({
             server: false,
             verify: function(connection, verified, depth, certs) {
-                // TODO: verify certificate through pinning
-                if (typeof connection !== 'undefined' && typeof verified !== 'undefined' && typeof depth !== 'undefined' && typeof certs !== 'undefined') {
-                    return true;
-                } else {
-                    return false;
+                if (pinnedCert) {
+                    // verify certificate through pinning
+                    return pinnedCert.verify(certs[0]);
                 }
+
+                // no pinning...
+                return true;
             },
             connected: function(connection) {
                 if (connection) {

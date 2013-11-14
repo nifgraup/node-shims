@@ -45,12 +45,28 @@ define(function(require) {
             connection.on('connect', done);
         });
 
-        describe("tls live connection", function() {
+        describe("tls live connection with certificate pinning", function() {
             var connection;
 
             beforeEach(function(done) {
-                connection = shims.tls.connect(443, 'google.com', {}, function() {});
-                connection.on('connect', done);
+                // get server certificate PEM for pinning
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', '/test/res/Google_Internet_Authority_G2.pem');
+                xhr.onload = function() {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        initConnection(xhr.responseText);
+                    }
+                };
+                xhr.send();
+
+                function initConnection(pem) {
+                    var options = {
+                        ca: [pem]
+                    };
+
+                    connection = shims.tls.connect(443, 'google.com', options, function() {});
+                    connection.on('connect', done);
+                }
             });
 
             it('should setKeepAlive', function() {
