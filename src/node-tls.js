@@ -116,6 +116,7 @@ define(function(require) {
                 }
 
                 // no pinning...
+                console.warn('No pinned certifiate present, TLS verification inactive!');
                 return true;
             },
             connected: function(connection) {
