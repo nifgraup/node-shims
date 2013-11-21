@@ -5,7 +5,7 @@ This repository contains a basic set shims for commonly used node API for use in
 
 ## Usage
 
-This repo can be used as a drop-in replacement for the node builtins:
+In a node enviroment, the native node API is provided. In a browser environment, the shims are used. This repo can be used as a drop-in replacement for the node builtins:
 
     var shims = require('node-shims'),
         util = shims.util;
@@ -18,7 +18,7 @@ To run the tests, do the following
 To run the tests in the browser as a chrome packaged app, do the following
 
     > npm install
-    > ./build-test.sh
+    > grunt copy
     > node test-server.js
 
     open chrome
@@ -26,6 +26,8 @@ To run the tests in the browser as a chrome packaged app, do the following
     activate developer mode
     load node-shims as unpacked extension
     watch the tests pass
+
+**Feel free to drop a patch :)**
 
 ## License
 
