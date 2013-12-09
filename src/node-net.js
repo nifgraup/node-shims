@@ -81,10 +81,11 @@ define(function(require) {
 
         Stream.call(self);
         if (options) {
-            throw {
+            self.emit('error', {
                 name: 'UnsupportedApiException',
                 message: 'This API is not supported in the chromify shim! Please refer to the documentation...'
-            };
+            });
+            return;
         }
 
         /**
@@ -119,10 +120,11 @@ define(function(require) {
             port, host, listener, connect;
 
         if (typeof args[0] === 'string') {
-            throw {
+            self.emit('error', {
                 name: 'UnsupportedApiException',
                 message: 'Unix named pipes are not supported in the chromify shim!'
-            };
+            });
+            return;
         }
 
         port = args[0];
@@ -137,7 +139,9 @@ define(function(require) {
                 if (result === 0) {
                     self.emit('connect');
                 } else {
-                    self.emit('error', new Error('Unable to connect'));
+                    self.emit('error', {
+                        message: 'Unable to connect'
+                    });
                 }
             });
         };
@@ -196,10 +200,11 @@ define(function(require) {
             buffer;
 
         if (typeof args[1] === 'string' && args[1] !== 'binary' && args[1] !== 'utf8') {
-            throw {
+            self.emit('error', {
                 name: 'UnsupportedApiException',
                 message: 'Unix named pipes are not supported in the chromify shim!'
-            };
+            });
+            return;
         }
 
         callback = (typeof args[args.length - 1] === 'function') ? args[args.length - 1] : function() {};
@@ -216,8 +221,9 @@ define(function(require) {
             disarmSocketTimeout.bind(self)();
 
             if (writeInfo.bytesWritten < 0) {
-                // the socket is broken, log the error
-                console.error('Could not write to socket ' + self._socketId + '. Chrome error code: ' + writeInfo.bytesWritten);
+                self.emit('error', {
+                    message: 'Could not write to socket ' + self._socketId + '. Chrome error code: ' + writeInfo.bytesWritten
+                });
                 return;
             }
 
