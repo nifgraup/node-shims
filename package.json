@@ -1,6 +1,6 @@
 {
     "name": "node-shims",
-    "version": "0.0.1",
+    "version": "0.1.0",
     "author": "whiteout.io",
     "maintainers": [{
         "name": "Felix Hammerl",

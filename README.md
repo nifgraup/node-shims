@@ -1,27 +1,29 @@
-node-shims [![Build Status](https://travis-ci.org/whiteout-io/node-shims.png?branch=master)](https://travis-ci.org/whiteout-io/node-shims)
+node-shims
 ==========
 
-This repository contains a basic set shims for commonly used node API for use in the browser. Unlike [node-browser-builtins](https://github.com/alexgorbatchev/node-browser-builtins), which is used by browserify, we do not require an additional build step, since we use [amdefine](https://github.com/jrburke/amdefine) to build AMD modules that can be used in the browser [via requirejs](http://www.requirejs.org) and node environments alike.
+This repository contains a basic set of shims for commonly used node API for use in Google Chrome. Unlike [node-browser-builtins](https://github.com/alexgorbatchev/node-browser-builtins), which is used by browserify, we do not require an additional build step, since we use [amdefine](https://github.com/jrburke/amdefine) to build AMD modules that can be used in the browser [via requirejs](http://www.requirejs.org) and node environments alike.
+
+[![Build Status](https://travis-ci.org/whiteout-io/node-shims.png?branch=master)](https://travis-ci.org/whiteout-io/node-shims)
 
 ## Usage
 
-In a node enviroment, the native node API is provided. In a browser environment, the shims are used. This repo can be used as a drop-in replacement for the node builtins:
+In a node enviroment, the native node API is provided. In a Chrome environment, the shims are used. This repo may serve as a drop-in replacement for the builtin node packages in your node module:
 
     var shims = require('node-shims'),
         util = shims.util;
 
-To run the tests, do the following
+To run the tests in node, do the following:
 
     > npm install
     > npm test
 
-To run the tests in the browser as a chrome packaged app, do the following
+To run the tests in Chrome as a Chrome packaged app, do the following:
 
     > npm install
     > grunt copy
     > node test-server.js
 
-    open chrome
+    open Chrome
     go to chrome://extensions/ 
     activate developer mode
     load node-shims as unpacked extension
