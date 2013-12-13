@@ -1,7 +1,7 @@
 node-shims
 ==========
 
-This repository contains a basic set of shims for commonly used node API for use in Google Chrome. Unlike [node-browser-builtins](https://github.com/alexgorbatchev/node-browser-builtins), which is used by browserify, we do not require an additional build step, since we use [amdefine](https://github.com/jrburke/amdefine) to build AMD modules that can be used in the browser [via requirejs](http://www.requirejs.org) and node environments alike.
+This repository contains a basic set of shims for commonly used node API for use in Chrome Packaged Apps. Most notably net/tls (TCP socket) APIs. Unlike [node-browser-builtins](https://github.com/alexgorbatchev/node-browser-builtins), which is used by browserify, we do not require an additional build step, since we use [amdefine](https://github.com/jrburke/amdefine) to build AMD modules that can be used in the browser [via requirejs](http://www.requirejs.org) and node environments alike.
 
 [![Build Status](https://travis-ci.org/whiteout-io/node-shims.png?branch=master)](https://travis-ci.org/whiteout-io/node-shims)
 
