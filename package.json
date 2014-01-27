@@ -10,7 +10,7 @@
     "dependencies": {
         "amdefine": ">=0.0.8",
         "setimmediate": ">=1.0.1",
-        "node-forge": "~0.2.5"
+        "node-forge": "~0.2.27"
     },
     "devDependencies": {
         "mocha": "~1.12.0",
