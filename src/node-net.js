@@ -289,7 +289,7 @@ define(function(require) {
             return;
         }
 
-        chrome.socket.read(self._socketId, 65536, function(readInfo) {
+        chrome.socket.read(self._socketId, function(readInfo) {
             if (readInfo.resultCode < 0) {
                 // the socket is broken. omit read and stop further reads
                 return;
