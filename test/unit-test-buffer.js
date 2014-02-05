@@ -59,6 +59,10 @@ define(function(require) {
             assert.equal(new B('MTIzNDU2IUAjJCVe', 'base64').toString('binary'), '123456!@#$%^');
         });
 
+        it('base64 buffer with line breaks to binary', function() {
+            assert.equal(new B('YXNkYXN\nkYXNk', 'base64').toString('binary'), 'asdasdasd');
+        });
+
         it('hex buffer to binary', function() {
             assert.equal(new B('31323334353621402324255e', 'hex').toString('binary'), '123456!@#$%^');
         });

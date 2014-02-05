@@ -24,7 +24,7 @@ define(function(require) {
 
         // Work-around: node's base64 implementation allows for non-padded strings while base64-js does not..
         if (encoding == "base64" && typeof subject == "string") {
-            subject = stringtrim(subject);
+            subject = subject.replace(/[ \r\n]*/g, '');
             while (subject.length % 4 !== 0) {
                 subject = subject + "=";
             }
