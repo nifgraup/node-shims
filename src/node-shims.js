@@ -21,25 +21,7 @@
 (function() {
     'use strict';
 
-    if (typeof module !== 'undefined' && module.exports) {
-        // node.js
-
-        var shims = module.exports;
-
-        shims.util = require('util');
-        shims.events = require('events');
-        shims.Stream = require('stream');
-        shims.net = require('net');
-        shims.tls = require('tls');
-        shims.Buffer = require('buffer');
-        shims.crypto = require('crypto');
-        shims.querystring = require('querystring');
-        shims.url = require('url');
-        shims.http = require('http');
-
-        return shims;
-
-    } else if (typeof define !== 'undefined' && define.amd) {
+    if (typeof define !== 'undefined' && define.amd) {
         // AMD
         define(function(require) {
             var shims = {};
@@ -57,6 +39,23 @@
 
             return shims;
         });
+    } else if (typeof module !== 'undefined' && module.exports) {
+        // node.js
+
+        var shims = module.exports;
+
+        shims.util = require('util');
+        shims.events = require('events');
+        shims.Stream = require('stream');
+        shims.net = require('net');
+        shims.tls = require('tls');
+        shims.Buffer = require('buffer');
+        shims.crypto = require('crypto');
+        shims.querystring = require('querystring');
+        shims.url = require('url');
+        shims.http = require('http');
+
+        return shims;
     }
 
 })();
