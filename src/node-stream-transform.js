@@ -63,7 +63,7 @@
 // the results of the previous transformed chunk were consumed.
 
 if (typeof define !== 'function') {
-    var define = require('amdefine')(module);
+    var define = require('amdefine')(module, require);
 }
 
 define(function(require) {
